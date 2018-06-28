@@ -15,6 +15,10 @@ import com.typesafe.sslconfig.ssl.{ ClientAuth, KeyManagerFactoryWrapper, SSLCon
 import scala.concurrent.Future
 import scala.util.{ Failure, Success }
 
+// NOTES:
+// https://github.com/akka/akka/blob/master/akka-stream-tests/src/test/scala/akka/stream/io/TlsSpec.scala
+// https://github.com/typesafehub/activator-akka-stream-scala/pull/43
+
 object TcpTLSEcho {
 
   /**
@@ -169,6 +173,10 @@ object TcpTLSEcho {
       )
 
     tlsSupport.atop(tls)
+  }
+
+  private def setupSslContext: SSLContext = {
+
   }
 
   private def getClientAuth(auth: ClientAuth): Option[TLSClientAuth] =
